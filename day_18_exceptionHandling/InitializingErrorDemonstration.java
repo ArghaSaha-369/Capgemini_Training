@@ -1,4 +1,4 @@
-package day_17_exceptionHandling;
+package day_18_exceptionHandling;
 
 public class InitializingErrorDemonstration {
 	static String s1 = null;

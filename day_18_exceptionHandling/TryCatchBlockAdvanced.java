@@ -1,9 +1,9 @@
-package day_17_exceptionHandling;
+package day_18_exceptionHandling;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TryCatchBlock {
+public class TryCatchBlockAdvanced {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		try {
@@ -11,17 +11,23 @@ public class TryCatchBlock {
 			int x = scan.nextInt();
 			int y = scan.nextInt();
 			System.out.println(x / y);
-			int[] arr = { 1, 2, 3, 4, 5 };
-			System.out.println("Enter the index to access");
-			System.out.println(arr[scan.nextInt()]);
 		} catch (ArithmeticException e) {
 			System.out.println("ArithmeticException handled");
 		} catch (InputMismatchException e) {
 			System.out.println("InputMismatchException handled");
+		}
+		try {
+			scan.nextLine();
+			int[] arr = { 1, 2, 3, 4, 5 };
+			System.out.println("Enter the index to access");
+			System.out.println(arr[scan.nextInt()]);
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("ArrayIndexOutOfBoundsException handled");
+		}
+		try {
+			Class.forName("Demo");
 		} catch (Exception e) {
-			System.out.println("Exception handled"); //You should always write your generic catch block at the end.
+			System.out.println("Exception handled");
 		}
 	}
 }
