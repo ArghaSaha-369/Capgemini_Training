@@ -1,10 +1,10 @@
-package day_22;
+package day_23;
 
 public class Node {
 	int data;
 	Node next;
 
-	public Node(int data) {
+	Node(int data) {
 		this.data = data;
 	}
 }
