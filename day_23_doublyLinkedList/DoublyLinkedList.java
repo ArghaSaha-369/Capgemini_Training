@@ -1,36 +1,52 @@
-package day_23;
+package day_23_doublyLinkedList;
 
-public class CircularSinglyLinkedList {
+public class DoublyLinkedList {
 	Node head;
 	Node tail;
-	static int count;
-
+	int count;
+	
 	public void insert(int data) {
 		Node node = new Node(data);
-
+		
 		if (head == null) {
 			head = node;
-			count++;
-		} else {
-			tail.next = node;
-			
+			tail = node;
 		}
-		tail = node;
-		tail.next = head;
+		else {
+			tail.next = node;
+			node.prev = tail;
+			tail = node;
+		}
+		count++;
 	}
 	
 	public void display() {
 		if (head == null) {
-			System.err.println("No data to display\n");
-			return;
-		} else {
-			Node current = head;
-			do {
-				System.err.print(current.data + " ");
-				current = current.next;
-			}while (current != head);
-			System.out.println();
+			System.out.println("List is Empty");
 		}
+		
+		Node current = head;
+		System.out.println("Forward:");
+		while (current != null) {
+			System.out.print(current.data + " ");
+			current = current.next;
+		}
+		System.out.println();
+		displayBackward();
+	}
+	
+	public void displayBackward() {
+		if (tail == null) {
+			System.out.println("List is Empty");
+		}
+		
+		Node current = tail;
+		System.out.println("Backward:");
+		while (current != null) {
+			System.out.print(current.data + " ");
+			current = current.prev;
+		}
+		System.out.println();
 	}
 	
 	public void update(int position, int newData) {
@@ -59,24 +75,28 @@ public class CircularSinglyLinkedList {
 			if(head == null) {
 				head = node;
 				tail = node;
-				node.next = head;
+				 
 			}
 			else {
 				node.next = head;
+				head.prev = node;
 				head = node;
-				tail.next = head;
 			}
+		}
+		else if (position == count + 1){
+			tail.next = node;
+			node.prev =tail;
+			tail = node;
 		}
 		else {
 			Node current = head;
-			for (int i =0; i<position -1; i++) {
+			for (int i =1; i<position -1; i++) {
 				current = current.next;
 			}
 			node.next = current.next;
+			node.prev = current;
+			current.next.prev = node;
 			current.next = node;
-			if(current == tail) {
-				tail = node;
-			}
 		}
 		count++;
 	}
@@ -97,20 +117,21 @@ public class CircularSinglyLinkedList {
 			}
 			else {
 				head = head.next;
-				tail.next = head;
+				head.prev = null;
 			}
 		}
+		else if(position == count) {
+			tail = tail.prev;
+			tail.next = null;
+		}
+		
 		else {
 			Node current = head;
-			for (int i = 1; i < position - 1; i++) {
+			for (int i = 1; i < position; i++) {
 				current = current.next;
 			}
-			Node toDelete = current.next;
-			current.next = toDelete.next;
-			
-			if(toDelete == tail) {
-				tail = current;
-			}
+			current.prev.next = current.next;
+			current.next.prev = current.prev;
 		}
 		count--;
 	}

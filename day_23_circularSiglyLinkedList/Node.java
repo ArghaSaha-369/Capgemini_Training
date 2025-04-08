@@ -1,4 +1,4 @@
-package day_23;
+package day_23_circularSiglyLinkedList;
 
 public class Node {
 	int data;

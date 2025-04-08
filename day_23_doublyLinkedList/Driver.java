@@ -1,11 +1,11 @@
-package day_23;
+package day_23_doublyLinkedList;
 
 import java.util.Scanner;
 
 public class Driver {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		CircularSinglyLinkedList list = new CircularSinglyLinkedList();
+		DoublyLinkedList list = new DoublyLinkedList();
 		boolean flag = true;
 		while (flag) {
 			System.out.println(
@@ -44,7 +44,7 @@ public class Driver {
 				list.deleteAt(position);
 				break;
 			}
-			case 6: {         
+			case 6: {
 				flag = false;
 				break;
 			}
