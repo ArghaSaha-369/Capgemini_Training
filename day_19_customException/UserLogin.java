@@ -19,7 +19,8 @@ public class UserLogin {
 			user.login(1234);
 		}
 		catch(InvalidPinException e) {
-			System.out.println(e.getMessage());
+//			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		System.out.println("Main End");
 	}
