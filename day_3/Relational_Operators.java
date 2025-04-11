@@ -14,7 +14,5 @@ public class Relational_Operators {
 		
 		var s2= (10>20 && 11>22) ? (10+20) : (20+12);
 		System.out.println(s2);
-		
-		var s2= (10>20 && 11>22) ? (10+20) : (20+12);
 	}
 }
