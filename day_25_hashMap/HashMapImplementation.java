@@ -38,10 +38,37 @@ public class HashMapImplementation {
 		}
 		return -1;
 	}
+	
+	public void deleteByKey(int key) {
+		int index = getBucketIndex(key);
+		Entry current = buckets[index];
+		Entry prev = null;
+		while(current != null) {
+			if (current.key == key) {
+				if(prev == null) {
+					buckets[index] = current.next;
+				}
+				else {
+					prev.next = current.next;
+				}
+				return;
+			}
+			prev = current;
+			current = current.next;
+		}
+		throw new RuntimeException("Key Not Found");
+	}
+	
+	
 	public static void main(String[] args) {
 		HashMapImplementation map = new HashMapImplementation();
 		map.put(10, 1);
 		map.put(20, 9);
+		int a = map.getValue(10);
+		System.out.println(a);
+		map.deleteByKey(20);
+		int b = map.getValue(20);
+		System.out.println(b);
 		
 	}
 }
