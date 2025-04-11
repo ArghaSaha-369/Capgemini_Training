@@ -59,6 +59,19 @@ public class HashMapImplementation {
 		throw new RuntimeException("Key Not Found");
 	}
 	
+	public void display() {
+		for (int i = 0; i< size; i++) {
+			Entry current = buckets[i];
+			System.out.print("Bucket "+ i + ": ");
+			while (current != null) {
+				System.out.print(current.key + " = " + current.value + " ");
+				current = current.next;
+			}
+			System.out.println("Nothing to Display");
+		}
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		HashMapImplementation map = new HashMapImplementation();
@@ -69,6 +82,7 @@ public class HashMapImplementation {
 		map.deleteByKey(20);
 		int b = map.getValue(20);
 		System.out.println(b);
+		map.display();
 		
 	}
 }
